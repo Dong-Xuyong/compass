@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#141414" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Compass" />
+  <title>Compass</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="dong-ui/theme.css" />
+  <link rel="stylesheet" href="/ui/shell.css?v=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="dong-ui/theme.js"></script>
+</head>
+<body class="dx">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="dx-header">
+    <a class="dx-home" href="https://dong-xuyong.github.io/" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+    </a>
+    <h1 class="dx-title">Compass</h1>
+    <div class="dx-actions">
+      <button type="button" id="btn-connect" class="dx-btn dx-btn--ghost">Connect</button>
+      <button type="button" data-dong-theme-toggle aria-label="Toggle color theme"></button>
+    </div>
+  </header>
+  <p id="sync-label" class="sync" aria-live="polite"></p>
+  <main id="main" class="dx-main" tabindex="-1">
+    <section id="panel-purpose" data-panel="purpose" aria-label="Purpose"></section>
+    <section id="panel-week" data-panel="week" aria-label="This week" hidden></section>
+    <section id="panel-mood" data-panel="mood" aria-label="Mood" hidden>
+      <button type="button" id="btn-low" class="dx-btn low-btn">Feeling low</button>
+      <div id="mood-chart"></div>
+      <div id="mood-table"></div>
+    </section>
+    <section id="panel-wins" data-panel="wins" aria-label="Wins" hidden>
+      <form id="win-form" class="dx-card composer">
+        <label for="win-text">A win from today</label>
+        <div class="composer-row">
+          <input id="win-text" name="text" maxlength="160" autocomplete="off" enterkeyhint="done" placeholder="One line" />
+          <button class="dx-btn" type="submit">Save</button>
+        </div>
+        <p id="win-count" class="dx-muted"></p>
+      </form>
+      <div id="wins-list"></div>
+    </section>
+    <section id="panel-better" data-panel="better" aria-label="1% Better" hidden>
+      <form id="better-form" class="dx-card composer">
+        <label for="better-text">1% better today</label>
+        <div class="composer-row">
+          <input id="better-text" name="text" maxlength="160" autocomplete="off" enterkeyhint="done" placeholder="One small change" />
+          <button class="dx-btn" type="submit">Save</button>
+        </div>
+        <p id="better-count" class="dx-muted"></p>
+      </form>
+      <div id="better-stats"></div>
+      <div id="curve"></div>
+      <div id="pick"></div>
+    </section>
+  </main>
+  <nav class="tabbar" aria-label="Compass sections">
+    <a href="#purpose" data-tab="purpose" aria-current="page">Purpose</a>
+    <a href="#week" data-tab="week">Week</a>
+    <a href="#mood" data-tab="mood">Mood</a>
+    <a href="#wins" data-tab="wins">Wins</a>
+    <a href="#better" data-tab="better" aria-label="1% Better">1%</a>
+  </nav>
+  <dialog id="tools" aria-label="Two minute tools">
+    <div class="tools-head">
+      <h2>Two minutes</h2>
+      <button type="button" class="dx-btn dx-btn--ghost" id="tools-close">Close</button>
+    </div>
+    <div class="tool-picks" id="tool-picks">
+      <button type="button" class="dx-btn dx-btn--ghost" data-tool="breathe">Box breathing</button>
+      <button type="button" class="dx-btn dx-btn--ghost" data-tool="walk">Walk</button>
+      <button type="button" class="dx-btn dx-btn--ghost" data-tool="reframe">Reframe</button>
+    </div>
+    <div id="tool-stage"></div>
+  </dialog>
+  <script src="dong-ui/gh-sync.js"></script>
+  <script src="js/purpose.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
